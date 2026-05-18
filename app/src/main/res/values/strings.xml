@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">VideoDownloader</string>
+    <string name="downloading">Downloading…</string>
+    <string name="completed">Completed</string>
+    <string name="failed">Failed</string>
+    <string name="paused">Paused</string>
+    <string name="queued">Queued</string>
+</resources>
