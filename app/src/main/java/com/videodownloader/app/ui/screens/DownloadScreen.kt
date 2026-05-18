@@ -231,7 +231,7 @@ fun DownloadScreen(viewModel: MainViewModel, uiState: com.videodownloader.app.vi
                                     inputUrl = ""
                                 }
                             },
-                            containerColor = Primary,
+                            colors = IconButtonDefaults.filledIconButtonColors(containerColor = Primary),
                             modifier = Modifier.size(50.dp)
                         ) {
                             Icon(Icons.Filled.Add, contentDescription = "Add",
@@ -460,15 +460,27 @@ fun DownloadItemCard(
                 Spacer(modifier = Modifier.height(10.dp))
 
                 // Progress Bar
-                LinearProgressIndicator(
-                    progress = { if (link.status == DownloadStatus.FETCHING_INFO) 0f else link.progress },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(6.dp)
-                        .clip(RoundedCornerShape(3.dp)),
-                    color = if (link.status == DownloadStatus.FETCHING_INFO) Secondary else Primary,
-                    trackColor = SurfaceVariant
-                )
+                val progressValue = if (link.status == DownloadStatus.FETCHING_INFO) 0f else link.progress
+                if (progressValue <= 0f) {
+                    LinearProgressIndicator(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(6.dp)
+                            .clip(RoundedCornerShape(3.dp)),
+                        color = Secondary,
+                        trackColor = SurfaceVariant
+                    )
+                } else {
+                    LinearProgressIndicator(
+                        progress = progressValue,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(6.dp)
+                            .clip(RoundedCornerShape(3.dp)),
+                        color = Primary,
+                        trackColor = SurfaceVariant
+                    )
+                }
 
                 Spacer(modifier = Modifier.height(6.dp))
 
