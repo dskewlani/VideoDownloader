@@ -7,6 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.io.File
+import java.net.URL
 
 data class VideoInfo(
     val title: String,
@@ -34,7 +35,7 @@ object YtDlpEngine {
     private const val TAG = "YtDlpEngine"
 
     // Best quality format selector - prioritizes 4K60, 2K60, 1080p60, etc.
-    private const val FORMAT_SELECTOR = """
+    private val FORMAT_SELECTOR = """
         bestvideo[ext=mp4][height>=2160][fps>=60]+bestaudio[ext=m4a]/
         bestvideo[ext=mp4][height>=2160]+bestaudio[ext=m4a]/
         bestvideo[ext=webm][height>=2160][fps>=60]+bestaudio[ext=webm]/
