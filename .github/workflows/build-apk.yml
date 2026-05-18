@@ -14,11 +14,9 @@ jobs:
           distribution: 'temurin'
           cache: gradle
       - name: Make gradlew executable
-        working-directory: VideoDownloader
-        run: chmod +x gradlew
+        run: chmod +x VideoDownloader/gradlew
       - name: Build Debug APK
-        working-directory: VideoDownloader
-        run: ./gradlew assembleDebug --stacktrace
+        run: VideoDownloader/gradlew assembleDebug --stacktrace -p VideoDownloader
       - name: Upload APK
         uses: actions/upload-artifact@v4
         if: success()
