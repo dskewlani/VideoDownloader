@@ -214,7 +214,7 @@ fun VideoPlayerScreen(
                             else exoPlayer.play()
                         },
                         modifier = Modifier.size(68.dp),
-                        containerColor = Primary
+                        colors = IconButtonDefaults.filledIconButtonColors(containerColor = Primary)
                     ) {
                         Icon(
                             if (isPlaying) Icons.Filled.Pause else Icons.Filled.PlayArrow,
